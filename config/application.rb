@@ -62,4 +62,42 @@ Jets.application.configure do
   # config.logger = Jets::Logger.new($strerr)
 
   config.controllers.default_protect_from_forgery = false
+
+
+  # s3_event
+  config.s3_event.configure_bucket = true # true by default
+  config.s3_event.notification_configuration = {
+    topic_configurations: [
+      {
+        events: ["s3:ObjectCreated:*"], # default: s3:ObjectCreated:*
+        topic_arn: "!Ref SnsTopic", # must use this logical id, dont change
+        # custom filter rule, by default there is no filter
+        filter: {
+          key: {
+            filter_rules: [
+              {
+                name: "prefix",
+                value: "one_thing",
+              }
+            ] # filter_rules
+          } # key
+        } # filter
+      },
+      {
+        events: ["s3:ObjectCreated:*"], # default: s3:ObjectCreated:*
+        topic_arn: "!Ref SnsTopic", # must use this logical id, dont change
+        # custom filter rule, by default there is no filter
+        filter: {
+          key: {
+            filter_rules: [
+              {
+                name: "prefix",
+                value: "another_thing",
+              }
+            ] # filter_rules
+          } # key
+        } # filter
+      },
+    ],
+  }
 end
