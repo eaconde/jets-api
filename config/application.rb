@@ -1,5 +1,5 @@
 Jets.application.configure do
-  config.project_name = "api"
+  config.project_name = "jets-api"
   config.mode = "api"
 
   config.prewarm.enable = true # default is true
