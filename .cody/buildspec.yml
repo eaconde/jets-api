@@ -10,7 +10,7 @@ phases:
       - echo Build started on `date`
       - sed -i '/BUNDLED WITH/Q' Gemfile.lock # hack to fix bundler issue: allow different versions of bundler to work
       - bundle
-      - JETS_ENV=test bundle exec rspec
+      - JETS_ENV=development bundle exec rspec
   post_build:
     commands:
       - bash -c 'if [ "$CODEBUILD_BUILD_SUCCEEDING" == "0" ]; then exit 1; fi'
