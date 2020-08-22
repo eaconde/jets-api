@@ -1,11 +1,10 @@
 version: 0.2
 
-
-
 phases:
   install:
     commands:
       - rbenv install 2.5.8
+      - gem install bundler
       - yum update -y
       - yum install -y rsync zip
   build:
