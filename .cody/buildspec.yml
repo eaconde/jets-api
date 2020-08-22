@@ -4,8 +4,6 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      ruby: 
     commands:
       - rbenv install 2.5
       - yum update -y
